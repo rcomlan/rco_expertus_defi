@@ -1,0 +1,12 @@
+﻿Functionalities : 
+
+- Welcome page (Welcome to Expertus) : done
+
+- Registering a candidate (register) : in progress
+
+- Candidate Sign In (login) --> Hello Expertus with below fields displayed : in progress
+	* Username
+	* Firstname and Lastname
+	
+- Apply for a job : pending
+- Apply CSS to .jsp pages : pending
