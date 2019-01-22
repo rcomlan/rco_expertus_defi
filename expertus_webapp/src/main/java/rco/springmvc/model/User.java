@@ -8,8 +8,10 @@ public class User
 	private String lastname;
 	private String email;
 	private String address;
-	private int phone;
+	private String phone;
+	private String profil;
 	
+
 	public String getUsername() 
 	{
 		return username;
@@ -70,13 +72,21 @@ public class User
 		this.address = address;
 	}
 	
-	public int getPhone() 
+	public String getPhone() 
 	{
 		return phone;
 	}
 	
-	public void setPhone(int phone) 
+	public void setPhone(String phone) 
 	{
 		this.phone = phone;
+	}
+	
+	public String getProfil() {
+		return profil;
+	}
+
+	public void setProfil(String profil) {
+		this.profil = profil;
 	}
 }

@@ -1,12 +1,16 @@
-﻿Functionalities : 
+﻿Current status : 
+
+- Loading Expertus logo in all .jsp pages : done
+
+- Page 'Hello Expertus' : done
+
+- Page Sign In (login) --> Welcome to Expertus with fields below displayed if the user authentication passed : done
+	* Username
+	* Firstname and Lastname
 
 - Welcome page (Welcome to Expertus) : done
 
-- Registering a candidate (register) : in progress
+- Registering (Sign Up) a candidate (register) : done
 
-- Candidate Sign In (login) --> Hello Expertus with below fields displayed : in progress
-	* Username
-	* Firstname and Lastname
-	
-- Apply for a job : pending
+- A candidate application for a job : incoming
 - Apply CSS to .jsp pages : pending

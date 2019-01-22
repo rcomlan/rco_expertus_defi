@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 18 jan. 2019 à 17:35
+-- Généré le :  mar. 22 jan. 2019 à 06:13
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
