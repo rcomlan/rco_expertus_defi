@@ -5,10 +5,12 @@ import rco.springmvc.model.User;
 
 public interface UserDAO {
 	
-	void register(User user);
+	void signup(User user);
 	
-	boolean checkUserAuthentification(String username, String password);
+	void createUser(String username, String password, String firstname, String lastname, String email, String address, String phone);
 	
+	boolean checkUserAuthentification(Login login);
+		
 	User validateUser(Login login);
 
 }

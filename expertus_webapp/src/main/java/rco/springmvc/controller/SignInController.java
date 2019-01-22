@@ -13,34 +13,42 @@ import org.springframework.web.servlet.ModelAndView;
 import rco.springmvc.model.Login;
 import rco.springmvc.model.User;
 import rco.springmvc.service.UserService;
+import rco.springmvc.service.UserServiceImpl;
 
 @Controller
 public class SignInController {
 	
 	@Autowired
-	UserService userAuthService;
-	
+	private UserService userService;
+				
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response) 
 	{
 		ModelAndView modelandview = new ModelAndView("signin");
-		modelandview.addObject("signin", new Login());
+		modelandview.addObject("login", new Login());
 	    return modelandview;
 	}
 	
 	
 	@RequestMapping(value = "/signInProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-	@ModelAttribute("signin") Login unLogin) 
+	@ModelAttribute("login") Login unLogin) 
 	{
 	    ModelAndView modelandview = null;
 	    
-	    User user = userAuthService.validateUser(unLogin);
+	    System.out.println("Username :");
+	    System.out.println(unLogin.getUsername());
+	    System.out.println("Password :");
+	    System.out.println(unLogin.getPassword());
+	    userService = new UserServiceImpl();
+	    User user = userService.validateUser(unLogin);
 	    
 	    if (null != user) 
 	    {
-	    	modelandview = new ModelAndView("Hello");
+	    	modelandview = new ModelAndView("welcome");
+	    	modelandview.addObject("username", user.getUsername());
 	    	modelandview.addObject("firstname", user.getFirstname());
+	    	modelandview.addObject("lastname", user.getLastname());
 	    } 
 	    else 
 	    {

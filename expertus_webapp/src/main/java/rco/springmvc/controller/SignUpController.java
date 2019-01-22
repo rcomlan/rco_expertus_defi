@@ -11,10 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import rco.springmvc.model.User;
 import rco.springmvc.service.UserService;
+import rco.springmvc.service.UserServiceImpl;
 
 @Controller
 public class SignUpController {
-	//public String[] credentials = new String[2];
 	
 	@Autowired
 	public UserService userService;
@@ -22,18 +22,21 @@ public class SignUpController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView showSignUp(HttpServletRequest request, HttpServletResponse response) 
 	{
-	    ModelAndView modelanview = new ModelAndView("signup");
-	    modelanview.addObject("user", new User());
-	    return modelanview;
+	    ModelAndView modelandview = new ModelAndView("signup");
+	    modelandview.addObject("user", new User());
+	    return modelandview;
 	}
 	
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/signUpProcess", method = RequestMethod.POST)
 	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user) 
 	{
-		userService.register(user);
-		//credentials[0] = user.getFirstname();
-		//credentials[1] = user.getLastname();
-		return new ModelAndView("Hello", "firstname", user.getFirstname());
+		userService = new UserServiceImpl();
+		userService.signup(user);
+		ModelAndView modelandview = new ModelAndView("welcome");
+		modelandview.addObject("username", user.getUsername());
+    	modelandview.addObject("firstname", user.getFirstname());
+    	modelandview.addObject("lastname", user.getLastname());
+		return modelandview;
 	}
 	
 }

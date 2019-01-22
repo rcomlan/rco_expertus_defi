@@ -1,13 +1,18 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-        <html>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-            <title>Sign In</title>
-        </head>
-        <body>
-            <form:form id="signinForm" modelAttribute="signin" action="loginProcess" method="post">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form"  uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Sign In</title>
+	</head>
+	<body>
+		<div class="form">
+			<img class="logo-signin" src="logo.jpg" alt="Logo Expertus">
+		</div>
+		
+		<div class="form">
+			<form:form id="signinForm" modelAttribute="login" action="signInProcess" method="post">
                 <table align="center">
                     <tr>
                         <td>
@@ -26,23 +31,39 @@
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td align="left">
-                            <form:button id="signin" name="signin">Sign In</form:button>
+                      
+                    </tr>
+                    <tr>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                        	<form:button id="login" name="login">Login</form:button>
                         </td>
                     </tr>
-                    <tr></tr>
                     <tr>
-                        <td></td>
-                        <td><a href="home.jsp">Home</a>
+                      
+                    </tr>
+                    <tr>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                        	<a href="home.jsp">Home</a>
                         </td>
                     </tr>
                 </table>
             </form:form>
+		</div>
+            
             <table align="center">
                 <tr>
                     <td style="font-style: italic; color: red;">${message}</td>
                 </tr>
             </table>
+            <script src='js/jquery-1.12.4.js'></script>
+
+    		<script src="js/home.js"></script>
+            
         </body>
-        </html>
+</html>
