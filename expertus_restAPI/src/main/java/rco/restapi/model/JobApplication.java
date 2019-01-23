@@ -8,6 +8,7 @@ public class JobApplication extends ExtenderMySQLModel
 
 	private String refjob;
 	private String username;
+	private String availability_date;
 	
 	public JobApplication() {
 		
@@ -44,6 +45,19 @@ public class JobApplication extends ExtenderMySQLModel
 		this.username = username;
 	}
 
+	
+
+	public String getAvailability_date() {
+		return availability_date;
+	}
+
+
+
+	public void setAvailability_date(String availability_date) {
+		this.availability_date = availability_date;
+	}
+
+
 
 	@Override
 	public String GetDatabaseTableName() {
@@ -58,8 +72,9 @@ public class JobApplication extends ExtenderMySQLModel
 		JobApplication jobApplication = new JobApplication();
 		
 		try {
-			jobApplication.username = resultSet.getString("username");		
-			jobApplication.refjob = resultSet.getString("refjob");
+			jobApplication.setUsername(resultSet.getString("username"));		
+			jobApplication.setRefjob(resultSet.getString("refjob"));
+			jobApplication.setAvailability_date(resultSet.getString("availability_date"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
