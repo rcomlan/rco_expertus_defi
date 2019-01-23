@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 23 jan. 2019 à 07:18
+-- Généré le :  mer. 23 jan. 2019 à 20:46
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `job` (
   `jobtitle` varchar(255) NOT NULL,
   `level` varchar(128) DEFAULT NULL,
   `salary` decimal(5,2) DEFAULT NULL,
+  `status` varchar(25) NOT NULL DEFAULT 'Opened',
   PRIMARY KEY (`refjob`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

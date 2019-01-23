@@ -9,6 +9,7 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <mysql.connector.version>5.1.23</mysql.connector.version>
   </properties>
 
   <dependencies>
@@ -22,11 +23,6 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
     <version>1.5.7.RELEASE</version>
-</dependency>
-<dependency>
-    <groupId>postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>9.0-801.jdbc4</version>
 </dependency>
     <!--  Gson: Java to Json conversion -->
     <dependency>

@@ -1,10 +1,7 @@
 ﻿Current status : 
 
-<<<<<<< HEAD
 - Loading Expertus logo in all .jsp pages : done
 
-=======
->>>>>>> 9488b62b73446a710bab99afc549b89eb5b844de
 - Page 'Hello Expertus' : done
 
 - Page Sign In (login) --> Welcome to Expertus with fields below displayed if the user authentication passed : done
@@ -15,9 +12,8 @@
 
 - Registering (Sign Up) a candidate (register) : done
 
-- A candidate application for a job : incoming
-<<<<<<< HEAD
-=======
+- A candidate application for a job : in progress
+* I'll add job insertion with REST services : incoming
+* Create appropriate .jsp page to apply for a job : incoming
 
->>>>>>> 9488b62b73446a710bab99afc549b89eb5b844de
 - Apply CSS to .jsp pages : pending

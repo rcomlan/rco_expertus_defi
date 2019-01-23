@@ -1,5 +1,20 @@
 package rco.restapi.service;
 
-public class JobService {
+import rco.restapi.repository.RepositoryFactory;
+
+public class JobService 
+{
+	
+	private RepositoryFactory repositoryFactory;
+	
+	public JobService(RepositoryFactory p_repositoryFactory)
+	{
+		this.repositoryFactory = p_repositoryFactory;
+	}
+	
+	public void AddJob()
+	{
+		
+	}
 
 }
