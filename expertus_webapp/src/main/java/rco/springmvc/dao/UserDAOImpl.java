@@ -30,7 +30,8 @@ public class UserDAOImpl implements UserDAO
 	{
 		
 	}
-		
+	
+	@Override
 	public void signup(User user) 
 	{
 		try 
@@ -57,6 +58,7 @@ public class UserDAOImpl implements UserDAO
 		
 	}
 	
+	@Override
 	public void signup(User user, String profil) 
 	{
 		try 
@@ -84,26 +86,7 @@ public class UserDAOImpl implements UserDAO
 		
 	}
 	
-	// Parse the form's fields
-	public void createUser(String username, String password, String firstname, String lastname, String email, String address, String phone) 
-	{
-		try 
-		{
-			connection = MySQLConnection.getInstance();
-			st = (Statement) connection.createStatement();
-			
-			sql = "insert into user values('" + username + "', '" + password + "', '" + firstname + "', '" + lastname + "', '" + email + "' , '" + address + "', " + phone + "";
-			st.executeUpdate(sql);
-		    st.close();
-		} 
-		catch (SQLException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
+	@Override
 	public User validateUser(Login login) 
 	{
 		try 
@@ -126,6 +109,7 @@ public class UserDAOImpl implements UserDAO
 	    return user;
 	}
 	
+	@Override
 	public User getUserInfo(String username, String password) 
 	{
 		connection = MySQLConnection.getInstance();
@@ -133,6 +117,29 @@ public class UserDAOImpl implements UserDAO
 		{
 			st = (Statement) connection.createStatement();
 			sql = "select * from user where username='" + username + "' and password='" + password + "'";
+			rs = st.executeQuery(sql);
+		    if (rs.next())
+		    {
+		    	user = new UserMapper().mapRow(rs);
+		    }
+		    st.close();	   
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return user;
+	}
+	
+	@Override
+	public User getUserInfo(String username) 
+	{
+		connection = MySQLConnection.getInstance();
+		try 
+		{
+			st = (Statement) connection.createStatement();
+			sql = "select * from user where username='" + username + "'";
 			rs = st.executeQuery(sql);
 		    if (rs.next())
 		    {

@@ -1,5 +1,7 @@
 package rco.springmvc.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import rco.springmvc.model.Login;
 import rco.springmvc.model.User;
+import rco.springmvc.model.Job;
+import rco.springmvc.service.JobService;
+import rco.springmvc.service.JobServiceImpl;
 import rco.springmvc.service.UserService;
 import rco.springmvc.service.UserServiceImpl;
 
@@ -20,12 +25,16 @@ public class SignInController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private JobService jobService;
 				
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response) 
 	{
 		ModelAndView modelandview = new ModelAndView("signin");
 		modelandview.addObject("login", new Login());
+		// Retourne une View qui est la liste des champs vides (username, password) requis pour se connecter
 	    return modelandview;
 	}
 	
@@ -41,11 +50,32 @@ public class SignInController {
 	    
 	    if (null != user) 
 	    {
-	    	modelandview = new ModelAndView("welcome");
-	    	modelandview.addObject("username", user.getUsername());
-	    	modelandview.addObject("firstname", user.getFirstname());
-	    	modelandview.addObject("lastname", user.getLastname());
-	    	modelandview.addObject("profil", user.getProfil());
+	    	if (!user.getUsername().toLowerCase().equals("admin"))
+			{
+	    		// Redirige vers la page d'affichage des postes disponibles
+	    		modelandview = new ModelAndView("careers");
+		    	modelandview.addObject("username", user.getUsername());
+		    	modelandview.addObject("firstname", user.getFirstname());
+		    	modelandview.addObject("lastname", user.getLastname());
+		    	modelandview.addObject("profil", user.getProfil());
+		    	
+		    	jobService = new JobServiceImpl();
+		    	ArrayList<Job> jobs = new ArrayList<Job>();
+		    	jobs = jobService.getJobsList("Opened");
+		    	for (int i=0 ; i < jobs.size(); i++)
+		    	{
+		    		modelandview.addObject("job", jobs.get(i));
+		    	}
+			}
+	    	else
+	    	{
+	    		// Redirige l'administrateur vers la page Welcome
+	    		modelandview = new ModelAndView("welcome");
+		    	modelandview.addObject("username", user.getUsername());
+		    	modelandview.addObject("firstname", user.getFirstname());
+		    	modelandview.addObject("lastname", user.getLastname());
+		    	modelandview.addObject("profil", user.getProfil());
+	    	}
 	    } 
 	    else 
 	    {
@@ -54,6 +84,5 @@ public class SignInController {
 	    }
 	    
 	    return modelandview;
-	    
 	  }
 }

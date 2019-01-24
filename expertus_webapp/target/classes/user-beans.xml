@@ -3,7 +3,10 @@
     <context:component-scan base-package="rco.springmvc" />
     <context:annotation-config />
     <bean id="userService" class="rco.springmvc.service.UserServiceImpl" />
+    <bean id="jobService" class="rco.springmvc.service.JobServiceImpl" />
     <bean id="userDAO" class="rco.springmvc.dao.UserDAOImpl" />
+    <bean id="jobDAO" class="rco.springmvc.dao.JobDAOImpl" />
+    <bean id="jobapplicatonDAO" class="rco.springmvc.dao.JobApplicationDAOImpl" />
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/expertus_database" />

@@ -12,10 +12,10 @@ public interface UserService
 	
 	User getUserInfo(String username, String password);
 	
+	User getUserInfo(String username);
+	
 	void signup(User user);
 	
 	void signup(User user, String profil);
-	
-	void createUser(String username, String password, String firstname, String lastname, String email, String address, String phone);
-	
+		
 }

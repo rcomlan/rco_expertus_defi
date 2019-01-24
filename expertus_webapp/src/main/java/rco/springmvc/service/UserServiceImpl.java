@@ -19,35 +19,39 @@ public class UserServiceImpl implements UserService
 		this.userDAOImpl = new UserDAOImpl();
 	}
 	
+	@Override
 	public User validateUser(Login login)
 	{
 		return userDAOImpl.validateUser(login);
 	}
 
+	@Override
 	public User getUserInfo(String username, String password)
 	{
 		return userDAOImpl.getUserInfo(username, password);
 	}
 	
+	@Override
 	public void signup(User user)
 	{
 		userDAOImpl.signup(user);
 	}
 	
+	@Override
 	public void signup(User user, String profil)
 	{
 		userDAOImpl.signup(user, profil);
 	}
-	
-	public void createUser(String username, String password, String firstname, String lastname, String email,
-			String address, String phone) 
-	{
-		this.userDAOImpl.createUser(username, password, firstname, lastname, email, address, phone);
-	}
-	
+		
 	public UserDAOImpl getUserServiceImpl()
 	{
 		return userDAOImpl;
+	}
+
+	@Override
+	public User getUserInfo(String username) 
+	{
+		return userDAOImpl.getUserInfo(username);
 	}
 	
 }

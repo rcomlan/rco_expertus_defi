@@ -1,5 +1,8 @@
 package rco.springmvc.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User 
 {
 	private String username;
@@ -11,6 +14,13 @@ public class User
 	private String phone;
 	private String profil;
 	
+	// Job applications for an user
+	public List <JobApplication> jobApplications;
+	
+	public User() 
+	{
+		jobApplications = new ArrayList<JobApplication>();
+	}
 
 	public String getUsername() 
 	{
@@ -89,4 +99,16 @@ public class User
 	public void setProfil(String profil) {
 		this.profil = profil;
 	}
+
+	public List<JobApplication> getJobApplications() {
+		return jobApplications;
+	}
+
+	public void setJobApplications(List<JobApplication> jobApplications) {
+		this.jobApplications = jobApplications;
+	}
+	
+	
+	
+	
 }

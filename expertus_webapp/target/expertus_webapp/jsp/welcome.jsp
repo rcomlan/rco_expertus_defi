@@ -18,6 +18,9 @@
 	<body>
 		<img src="${pageContext.request.contextPath}/images/logo.jpg" alt="Logo Expertus" class="logo-signin">
 		<div>
+            <h2>Welcome to Expertus. Enjoy !</h2>
+		</div>
+		<div>
 			<table>
         	<tr>
         		<td>Username :</td>
@@ -32,9 +35,6 @@
         		<td>${profil}</td>
             </tr>
         </table>
-		</div>
-		<div>
-            <h2>Welcome to Expertus. Enjoy !</h2>
 		</div>
 		<div>
         	<a href="home.jsp">Home</a>
