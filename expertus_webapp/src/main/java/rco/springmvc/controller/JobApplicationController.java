@@ -25,7 +25,7 @@ public class JobApplicationController
 	
 	@Autowired
 	public UserService userService;
-
+	
 	@RequestMapping(value = "/careers", method = RequestMethod.GET)
 	public ModelAndView showCareers(HttpServletRequest request, HttpServletResponse response) 
 	{
@@ -33,7 +33,7 @@ public class JobApplicationController
 	    modelandview.addObject("user", new User());
 	    
 	    jobService = new JobServiceImpl();
-	    modelandview.addObject("job", jobService.getJobsList("Opened"));
+	    modelandview.addObject("jobs", jobService.getJobsList("Opened"));
 	    
 	    return modelandview;
 	}

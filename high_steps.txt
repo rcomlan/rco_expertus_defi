@@ -12,8 +12,12 @@
 
 - Registering (Sign Up) a candidate (register) : done
 
-- A candidate application for a job : in progress
-* I'll add job insertion with REST services : incoming
-* Create appropriate .jsp page to apply for a job : incoming
+- Available jobs displayed for the logged user + resume uploading feature : done
 
-- Apply CSS to .jsp pages : pending
+- REST services added in restAPI project to allow the administrator to add job : implemented / in test
+
+Next step
+
+- Select jobs to apply and confirm : in progress / test
+
+- Apply/Seperate CSS to .jsp pages : pending
