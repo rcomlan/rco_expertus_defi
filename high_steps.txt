@@ -11,6 +11,7 @@
 - Welcome page (Welcome to Expertus) : done
 
 - Registering (Sign Up) a candidate including Upload resume feature (register) : done
+	* Redirection to Sign In form to validate the registering : done
 
 - Available jobs displayed for the logged user + resume uploading feature : done
 

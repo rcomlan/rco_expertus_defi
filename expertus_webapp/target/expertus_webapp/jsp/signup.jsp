@@ -90,7 +90,7 @@
                   		<input type="file" name="resume" id="file" /> <br/>
                   	</td>
                   	<td>
-                  		<strong>Apply to all jobs submissions *</strong>
+                  		<strong>Applied to all jobs submissions *</strong>
                   	</td>
                   	
                   </tr>

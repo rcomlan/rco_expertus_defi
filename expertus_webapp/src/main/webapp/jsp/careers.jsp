@@ -66,7 +66,7 @@
 		            	<td>Profil :</td>
 		        		<td>${profil}</td>
 		            </tr>
-	        	</table>
+		         </table>
         	</div>
         	
         	<div align="center">

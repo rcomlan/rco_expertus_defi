@@ -11,6 +11,7 @@ rco\springmvc\service\MySQLConnection.class
 rco\springmvc\dao\UserDAOImpl.class
 rco\springmvc\dao\JobDAO.class
 rco\springmvc\dao\JobMapper.class
+rco\springmvc\servlet\HandlerServlet.class
 rco\springmvc\model\Job.class
 rco\springmvc\controller\JobApplicationController.class
 rco\springmvc\model\Login.class

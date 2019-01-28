@@ -50,8 +50,9 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/careers.jsp");
-//		dispatcher.forward(request, response);
+		System.out.println("----- Get Request for /register ---------");
+		response.setStatus(HttpServletResponse.SC_FOUND);//302
+	    response.setHeader("Location", "http://localhost:8080/expertus_webapp/signin");
 	}
 
 	/**
@@ -98,7 +99,7 @@ public class RegisterServlet extends HttpServlet {
 		 * @RequestMapping(value = "/careers", method = RequestMethod.GET)
 		 * Class : JobApplicationController
 		 * */
-	    // doGet(request, response);       
+	    doGet(request, response);       
         
 	}
 	
