@@ -10,7 +10,7 @@
 
 - Welcome page (Welcome to Expertus) : done
 
-- Registering (Sign Up) a candidate (register) : done
+- Registering (Sign Up) a candidate including Upload resume feature (register) : done
 
 - Available jobs displayed for the logged user + resume uploading feature : done
 

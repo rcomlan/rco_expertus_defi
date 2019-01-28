@@ -17,5 +17,8 @@ public interface UserService
 	void signup(User user);
 	
 	void signup(User user, String profil);
+	
+	void createUser(String username, String password, String firstname, String lastname, String email, String address, String phone, byte[] resume);
 		
+	void createAdmin(String username, String password, String firstname, String lastname, String email, String address, String phone, String profil);
 }

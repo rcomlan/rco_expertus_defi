@@ -51,7 +51,7 @@
             <h2>Careers at Expertus</h2>
 		</div>
 		
-		<form:form id="CareersForm" modelAttribute="login" action="signInProcess" method="post">
+		<form:form id="CareersForm" modelAttribute="job" action="applyProcess" method="post">
 			<div>
 				<table>
 		        	<tr>
@@ -68,13 +68,17 @@
 		            </tr>
 	        	</table>
         	</div>
+        	
+        	<div align="center">
+        		<h3>Available jobs</h3>
+        	</div>
         	        	
        		<div>
 		        <table id="t01" style="width:100%">
-		            <caption><h3>Available jobs</h3></caption>
 		            <thead>
 		                <tr class="tr tr-success">
 		                    <td>Reference </td>
+		                    <td>URL </td>
 		                    <td>Published date</td>
 		                    <td>End publish date</td>
 		                    <td>Job Title</td>
@@ -88,6 +92,7 @@
 		                <c:forEach items="${jobs}" var="jobs">
 		                    <tr>
 		                        <td>${jobs.refjob}</td>
+		                        <td>${jobs.url}</td>
 			                    <td>${jobs.datepublish}</td>
 			                    <td>${jobs.endpublishdate}</td>
 			                    <td>${jobs.jobtitle}</td>
@@ -101,28 +106,13 @@
 		        </table>
 		    </div>
 		    <br>
+		    <br>
+		    <div>
+				<form:button id="jobapplication" name="thanks">Confirm submit</form:button>
+			</div>
+		    <div>
+	        	<a href="${pageContext.request.contextPath}/home.jsp">Home</a>
+			</div>
 		</form:form>
-		
-		<div>
-			<form method="POST" action="upload" enctype="multipart/form-data" >
-				Your resume :
-				<input type="file" name="file" id="file" /> <br/>
-				<br>
-				Destination:
-				<input type="text" value="C:\Temp" name="destination"/>
-				<br>
-				<br>
-				Applicable pour toutes les candidatures*
-				<input type="submit" value="Upload" name="upload" id="upload" />
-			</form>
-		</div>
-	
-		<div>
-		
-		</div>
-		
-		<div>
-        	<a href="home.jsp">Home</a>
-		</div>
     </body>
 </html>

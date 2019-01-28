@@ -3,8 +3,9 @@ C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\cont
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\controller\SignInController.java
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\controller\SignUpController.java
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\dao\JobDAOImpl.java
+C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\controller\HomeController.java
+C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\servlet\RegisterServlet.java
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\model\Job.java
-C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\servlet\FileUploadServlet.java
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\model\Login.java
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\service\UserService.java
 C:\Users\dell\eclipse-workspace\expertus_webapp\src\main\java\rco\springmvc\dao\JobApplicationDAO.java

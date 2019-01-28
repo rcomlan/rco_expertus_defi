@@ -22,7 +22,7 @@
             <h2>Careers at Expertus</h2>
 		</div>
 		<div>
-			<form:form id="CareersForm" modelAttribute="job" action="signInProcess" method="post">
+			<form:form id="CareersForm" modelAttribute="job" action="thanks" method="post">
 				<table>
 		        	<tr>
 		        		<td>Username :</td>
@@ -47,7 +47,7 @@
 		            <input type="submit" value="Upload" name="upload" id="upload" />
         		</form>
         		<div>
-             		<form:button align="center" id="apply" name="apply">Apply</form:button>
+             		<form:button align="center" id="job" name="job">Apply</form:button>
 				</div>
 			</form:form>
 		</div>

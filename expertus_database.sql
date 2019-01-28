@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 24 jan. 2019 à 17:20
+-- Généré le :  lun. 28 jan. 2019 à 06:14
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -31,14 +31,23 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `job`;
 CREATE TABLE IF NOT EXISTS `job` (
   `refjob` varchar(25) NOT NULL,
+  `url` varchar(500) DEFAULT NULL,
   `datepublish` date NOT NULL,
   `endpublishdate` date NOT NULL,
   `jobtitle` varchar(255) NOT NULL,
   `level` varchar(128) DEFAULT NULL,
-  `salary` decimal(5,2) DEFAULT NULL,
+  `salary` double(5,2) DEFAULT NULL,
   `status` varchar(25) NOT NULL DEFAULT 'Opened',
   PRIMARY KEY (`refjob`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `job`
+--
+
+INSERT INTO `job` (`refjob`, `url`, `datepublish`, `endpublishdate`, `jobtitle`, `level`, `salary`, `status`) VALUES
+('ana01', NULL, '2019-01-08', '2019-01-31', 'analyste', 'moyen', 600.00, 'Opened'),
+('dev01', NULL, '2019-01-01', '2019-01-31', 'programmeur', 'senior', 300.00, 'Opened');
 
 -- --------------------------------------------------------
 
@@ -51,7 +60,6 @@ CREATE TABLE IF NOT EXISTS `job_application` (
   `username` varchar(25) NOT NULL,
   `refjob` varchar(25) NOT NULL,
   `availability_date` date NOT NULL,
-  `resume` mediumblob,
   PRIMARY KEY (`username`,`refjob`),
   KEY `refjob` (`refjob`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -72,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address` varchar(255) DEFAULT NULL,
   `phone` varchar(11) DEFAULT NULL,
   `profil` varchar(50) NOT NULL DEFAULT 'Candidate',
+  `resume` mediumblob,
   PRIMARY KEY (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;

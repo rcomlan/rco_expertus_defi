@@ -1,7 +1,5 @@
 package rco.springmvc.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import rco.springmvc.model.Job;
 import rco.springmvc.model.Login;
 import rco.springmvc.model.User;
-import rco.springmvc.service.JobService;
-import rco.springmvc.service.JobServiceImpl;
 import rco.springmvc.service.UserService;
 import rco.springmvc.service.UserServiceImpl;
+
+
+
 
 @Controller
 public class SignInController 
@@ -26,16 +24,14 @@ public class SignInController
 	
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private JobService jobService;
-				
+		
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response) 
 	{
 		ModelAndView modelandview = new ModelAndView("signin");
 		modelandview.addObject("login", new Login());
-		// Retourne une View qui est la liste des champs vides (username, password) requis pour se connecter
+		
+		// Return Login View with blank fields
 	    return modelandview;
 	}
 	
@@ -46,42 +42,43 @@ public class SignInController
 	{
 	    ModelAndView modelandview = null;
 	    
+	    /* Username and Password verifications
+	     * Process only if the user is authorized to access 
+	     * to careers/welcome page, else redirect to Login page
+	     * */
+	    
 	    userService = new UserServiceImpl();
 	    User user = userService.validateUser(unLogin);
-	    
+	    	    
+	    // User valid
 	    if (null != user) 
 	    {
 	    	if (!user.getUsername().toLowerCase().equals("admin"))
 			{
-	    		// Redirige vers la page d'affichage des postes disponibles
-	    		modelandview = new ModelAndView("careers");
-		    	modelandview.addObject("username", user.getUsername());
-		    	modelandview.addObject("firstname", user.getFirstname());
-		    	modelandview.addObject("lastname", user.getLastname());
-		    	modelandview.addObject("profil", user.getProfil());
-		    	jobService = new JobServiceImpl();
-		    	ArrayList<Job> jobs = new ArrayList<Job>();
-		    	jobs = jobService.getJobsList("Opened");    	   	
-
-		    	// Add jobs to the object View
-		    	modelandview.addObject("jobs", jobs);
+	    		/*Redirect to : 
+	    		 * @RequestMapping(value = "/careers", method = RequestMethod.GET)
+	    		 * Class : JobApplicationController
+	    		 * */
+	    		modelandview = new ModelAndView();
+	    		modelandview.setViewName("redirect:/careers/{username}");
 			}
 	    	else
 	    	{
-	    		// Redirige l'administrateur vers la page Welcome
+	    		// Redirect the Administrator to Welcome page
 	    		modelandview = new ModelAndView("welcome");
-		    	modelandview.addObject("username", user.getUsername());
-		    	modelandview.addObject("firstname", user.getFirstname());
-		    	modelandview.addObject("lastname", user.getLastname());
-		    	modelandview.addObject("profil", user.getProfil());
-	    	}
-	    } 
-	    else 
+	    	}	
+	    	modelandview.addObject("username", user.getUsername());
+	    	modelandview.addObject("firstname", user.getFirstname());
+	    	modelandview.addObject("lastname", user.getLastname());
+	    	modelandview.addObject("profil", user.getProfil());
+	    }
+	    else
 	    {
+	    	// Redirect to login form
 	    	modelandview = new ModelAndView("signin");
 	    	modelandview.addObject("message", "Please check the username and password !!");
 	    }
 	    
 	    return modelandview;
-	  }
+	}
 }

@@ -42,7 +42,19 @@ public class UserServiceImpl implements UserService
 	{
 		userDAOImpl.signup(user, profil);
 	}
+	
+	@Override
+	public void createUser(String username, String password, String firstname, String lastname, String email, String address, String phone, byte[] resume)
+	{
+		userDAOImpl.createUser(username, password, firstname, lastname, email, address, phone, resume);
+	}
 		
+	@Override
+	public void createAdmin(String username, String password, String firstname, String lastname, String email, String address, String phone, String profil)
+	{
+		userDAOImpl.createAdmin(username, password, firstname, lastname, email, address, phone, profil);
+	}
+	
 	public UserDAOImpl getUserServiceImpl()
 	{
 		return userDAOImpl;

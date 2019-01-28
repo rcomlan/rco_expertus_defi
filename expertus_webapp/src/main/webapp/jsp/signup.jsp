@@ -22,8 +22,9 @@
 	</div>
 	
 	<div class="form">
-		<form:form id="signupForm" modelAttribute="user" action="signUpProcess" method="post">
-              <table>
+		<form:form id="signupForm" modelAttribute="user" action="register" method="post" enctype="multipart/form-data">
+              <div>
+           		<table>
                   <tr>
                       <td>
                           <form:label path="username">Username</form:label>
@@ -80,32 +81,30 @@
                           <form:input path="phone" name="phone" id="phone" />
                       </td>
                   </tr>
-                  <tr>
-                      
-                  </tr>
-                  <tr>
-                      
-                  </tr>
-                  <tr>
-                      <td>
-                      	  <form:button align="center" id="signup" name="signup">Register</form:button>
-                      </td>
-                  </tr>
                   
                   <tr>
-                      
+                  	<td>
+                  		Your resume 
+                  	</td>
+                  	<td>
+                  		<input type="file" name="resume" id="file" /> <br/>
+                  	</td>
+                  	<td>
+                  		<strong>Apply to all jobs submissions *</strong>
+                  	</td>
+                  	
                   </tr>
-                  <tr>
-                      
-                  </tr>
-                  <tr>
-                      <td>
-                      	  <a href="home.jsp">Home</a>
-                      </td>
-                  </tr>
-              </table>
+                  
+           		</table>
+              </div>
+              <div>
+              		<input type="submit" value="Register" name="signup" id="signup" />
+			  </div>
+		        
+        	  <div>
+       			<a href="home.jsp">Home</a>
+        	  </div>
     	</form:form>
 	</div>
-    
 </body>
 </html>

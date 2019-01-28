@@ -6,6 +6,7 @@ public class Job
 {
 	
 	private String refjob;
+	private String Url;
 	private String datepublish;
 	private String endpublishdate;
 	private String jobtitle;
@@ -36,6 +37,14 @@ public class Job
 
 	public void setRefjob(String refjob) {
 		this.refjob = refjob;
+	}
+	
+	public String getUrl() {
+		return Url;
+	}
+
+	public void setUrl(String url) {
+		Url = url;
 	}
 
 	public String getDatepublish() {

@@ -1,14 +1,18 @@
 package rco.springmvc.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import rco.springmvc.model.Job;
 import rco.springmvc.model.JobApplication;
 import rco.springmvc.model.User;
 import rco.springmvc.service.JobService;
@@ -26,33 +30,49 @@ public class JobApplicationController
 	@Autowired
 	public UserService userService;
 	
-	@RequestMapping(value = "/careers", method = RequestMethod.GET)
-	public ModelAndView showCareers(HttpServletRequest request, HttpServletResponse response) 
+	@RequestMapping(value = "/careers/{username}", method = RequestMethod.GET)
+	public ModelAndView showCareers(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("job") Job job, @PathVariable("username") String username) 
 	{
-	    ModelAndView modelandview = new ModelAndView("jobapplication");
-	    modelandview.addObject("user", new User());
+		// Create a View Object careers with unLogin Model data
+		ModelAndView modelandview = null;
+		
+		/* Retrieve the parameter username from the previous form (signin.jsp)
+		 * Will be used to load user informations into the View careers
+		 * */
+	    userService = new UserServiceImpl();
+	    User loggedUser = userService.getUserInfo(username);
 	    
-	    jobService = new JobServiceImpl();
-	    modelandview.addObject("jobs", jobService.getJobsList("Opened"));
+	    modelandview = new ModelAndView("careers");
+    	modelandview.addObject("username", loggedUser.getUsername());
+    	modelandview.addObject("firstname", loggedUser.getFirstname());
+    	modelandview.addObject("lastname", loggedUser.getLastname());
+    	modelandview.addObject("profil", loggedUser.getProfil());
 	    
+		jobService = new JobServiceImpl();
+    	ArrayList<Job> jobs = new ArrayList<Job>();
+    	jobs = jobService.getJobsList("Opened");   
+	    modelandview.addObject("jobs", jobs);
 	    return modelandview;
 	}
 	
-	@RequestMapping(value = "/careers/{refjob}/", method = RequestMethod.GET)
-	public ModelAndView showACareer(HttpServletRequest request, HttpServletResponse response, String refjob) 
+	@RequestMapping(value = "/thanks", method = RequestMethod.GET)
+	public ModelAndView showConfirmation(HttpServletRequest request, HttpServletResponse response, 
+	@ModelAttribute("jobapplication") JobApplication jobapplication, String refjob, String username) 
 	{
-	    ModelAndView modelandview = new ModelAndView("jobapplication");
+	    ModelAndView modelandview = new ModelAndView("thanks");
 	    modelandview.addObject("user", new User());
+	    String confirmation = (username + refjob).toUpperCase();
+	    modelandview.addObject("confirmation", confirmation);
 	    
 	    jobService = new JobServiceImpl();
-	    modelandview.addObject("job", jobService.getJob(refjob));
+	    modelandview.addObject("jobapplication");
 	    
 	    // Retourne l'interface du job recherché
 	    return modelandview;
 	}
 	
-	@RequestMapping(value = "/user/{username}/careers/{refjob}/apply", method = RequestMethod.POST)
-	public ModelAndView addJobApplication(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("job_application") JobApplication jobapplication, String refjob, String username) 
+	@RequestMapping(value = "/applyProcess", method = RequestMethod.POST)
+	public ModelAndView addJobApplication(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jobapplication") JobApplication jobapplication, String refjob, String username) 
 	{		
 		ModelAndView modelandview;
 		userService = new UserServiceImpl();
@@ -62,11 +82,10 @@ public class JobApplicationController
 		else 
 		{
 			modelandview = new ModelAndView("thanks");
-		    modelandview.addObject("job_application", new JobApplication());
+		    modelandview.addObject("jobapplication", new JobApplication());
+		    modelandview.addObject("user", user);
 		    jobService = new JobServiceImpl();
 		    jobService.addJobApplication(username, refjob, jobapplication.getAvailability_date(), jobapplication.getResume());
-		    String confirmation = (username + refjob).toUpperCase();
-		    modelandview.addObject("confirmation", confirmation);
 		}
 		modelandview.addObject("username", user.getUsername());
     	modelandview.addObject("firstname", user.getFirstname());

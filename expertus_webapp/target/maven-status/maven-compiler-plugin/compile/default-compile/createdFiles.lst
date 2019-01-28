@@ -4,13 +4,13 @@ rco\springmvc\model\JobApplication.class
 rco\springmvc\model\User.class
 rco\springmvc\controller\SignInController.class
 rco\springmvc\controller\SignUpController.class
+rco\springmvc\servlet\RegisterServlet.class
 rco\springmvc\dao\JobApplicationDAOImpl.class
 rco\springmvc\dao\JobApplicationDAO.class
 rco\springmvc\service\MySQLConnection.class
 rco\springmvc\dao\UserDAOImpl.class
 rco\springmvc\dao\JobDAO.class
 rco\springmvc\dao\JobMapper.class
-rco\springmvc\servlet\FileUploadServlet.class
 rco\springmvc\model\Job.class
 rco\springmvc\controller\JobApplicationController.class
 rco\springmvc\model\Login.class
@@ -18,4 +18,5 @@ rco\springmvc\service\JobServiceImpl.class
 rco\springmvc\dao\UserMapper.class
 rco\springmvc\service\UserService.class
 rco\springmvc\service\JobService.class
+rco\springmvc\controller\HomeController.class
 rco\springmvc\dao\JobDAOImpl.class

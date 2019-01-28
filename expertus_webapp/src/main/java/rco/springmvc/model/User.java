@@ -13,6 +13,7 @@ public class User
 	private String address;
 	private String phone;
 	private String profil;
+	private byte[] resume;
 	
 	// Job applications for an user
 	public List <JobApplication> jobApplications;
@@ -107,7 +108,14 @@ public class User
 	public void setJobApplications(List<JobApplication> jobApplications) {
 		this.jobApplications = jobApplications;
 	}
-	
+
+	public byte[] getResume() {
+		return resume;
+	}
+
+	public void setResume(byte[] resume) {
+		this.resume = resume;
+	}
 	
 	
 	
