@@ -16,7 +16,7 @@ public class JobRepository extends RepositoryBase<Job>
 		Job job = new Job();
 		List<Job> ts = new ArrayList();
 		try {
-			String _query = "select * from job where job.status = 'available'";	
+			String _query = "select * from job where job.status = 'Opened'";	
 			Statement stmt = super._dbConnection.createStatement();
 			ResultSet _resultSet = stmt.executeQuery(_query);	
 			 while (_resultSet.next()) {
@@ -38,7 +38,7 @@ public class JobRepository extends RepositoryBase<Job>
 		Job job = new Job();
 		List<Job> ts = new ArrayList();
 		try {
-			String _query = "select * from job where job.status = 'closed'";	
+			String _query = "select * from job where job.status = 'Closed'";	
 			Statement stmt = super._dbConnection.createStatement();
 			ResultSet _resultSet = stmt.executeQuery(_query);	
 			 while (_resultSet.next()) {

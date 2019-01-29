@@ -7,6 +7,7 @@ public class Job extends ExtenderMySQLModel
 {
 	
 	public String refjob;
+	private String url;
 	public String datepublish;
 	public String endpublishdate;
 	public String jobtitle;
@@ -20,10 +21,11 @@ public class Job extends ExtenderMySQLModel
 
 	}
 
-	public Job(String refjob, String datepublish, String endpublishdate, String jobtitle, String level, Double salary,
+	public Job(String refjob, String url, String datepublish, String endpublishdate, String jobtitle, String level, Double salary,
 			String status) {
 		super();
 		this.refjob = refjob;
+		this.url = url;
 		this.datepublish = datepublish;
 		this.endpublishdate = endpublishdate;
 		this.jobtitle = jobtitle;
@@ -86,6 +88,16 @@ public class Job extends ExtenderMySQLModel
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override

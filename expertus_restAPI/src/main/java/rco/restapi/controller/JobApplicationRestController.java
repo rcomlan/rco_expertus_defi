@@ -51,6 +51,7 @@ public class JobApplicationRestController extends BaseController
 			{
 				Job unJob = new Job();
 				unJob.setRefjob(_arrayJson.getJSONObject(i).get("refjob").toString());
+				unJob.setDatepublish(_arrayJson.getJSONObject(i).get("url").toString());
 				unJob.setDatepublish(_arrayJson.getJSONObject(i).get("datepublish").toString());
 				unJob.setEndpublishdate(_arrayJson.getJSONObject(i).get("endpublishdate").toString());
 				unJob.setJobtitle(_arrayJson.getJSONObject(i).get("jobtitle").toString());

@@ -17,7 +17,7 @@ public class JobApplicationRepository extends RepositoryBase<JobApplication>
 		Job job = new Job();
 		List<Job> ts = new ArrayList();
 		try {
-			String _query = "select job.refjob, job.datepublish, job.endpublishdate, job.jobtitle, job.level, job.salary, job.status from job, user, job_application where user.username = job_application.username and job.refjob = job_application.refjob";	
+			String _query = "select job.refjob, job.url, job.datepublish, job.endpublishdate, job.jobtitle, job.level, job.salary, job.status from job, user, job_application where user.username = job_application.username and job.refjob = job_application.refjob";	
 			Statement stmt = super._dbConnection.createStatement();
 			ResultSet _resultSet = stmt.executeQuery(_query);	
 			 while (_resultSet.next()) {
@@ -37,7 +37,7 @@ public class JobApplicationRepository extends RepositoryBase<JobApplication>
 		Job job = new Job();
 		List<Job> ts = new ArrayList();
 		try {
-			String _query = "select job.refjob, job.datepublish, job.endpublishdate, job.jobtitle, job.level, job.salary, job.status from job, user, job_application where user.username = job_application.username and job.refjob = job_application.refjob and user.username = '" + username + "'";	
+			String _query = "select job.refjob, job.url, job.datepublish, job.endpublishdate, job.jobtitle, job.level, job.salary, job.status from job, user, job_application where user.username = job_application.username and job.refjob = job_application.refjob and user.username = '" + username + "'";	
 			Statement stmt = super._dbConnection.createStatement();
 			ResultSet _resultSet = stmt.executeQuery(_query);	
 			 while (_resultSet.next()) {
