@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 28 jan. 2019 à 06:14
+-- Généré le :  mar. 29 jan. 2019 à 22:59
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -59,7 +59,6 @@ DROP TABLE IF EXISTS `job_application`;
 CREATE TABLE IF NOT EXISTS `job_application` (
   `username` varchar(25) NOT NULL,
   `refjob` varchar(25) NOT NULL,
-  `availability_date` date NOT NULL,
   PRIMARY KEY (`username`,`refjob`),
   KEY `refjob` (`refjob`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

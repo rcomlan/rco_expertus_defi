@@ -19,29 +19,14 @@
 	<body>
 		<img src="${pageContext.request.contextPath}/images/logo.jpg" alt="Logo Expertus" class="logo-signin">
 		<div>
-			<form:form id="CareersForm" modelAttribute="jobapplication" action="thanks" method="get">
-				<table>
-		        	<tr>
-		        		<td>Username :</td>
-		        		<td>${username}</td>
-		            </tr>
-		            <tr>
-		            	<td>Full Name :</td>
-		        		<td>${firstname}, ${lastname}</td>
-		            </tr>
-		            <tr>
-		            	<td>Profil :</td>
-		        		<td>${profil}</td>
-		            </tr>
-	        	</table>
-	        	
+			<form:form id="CareersForm" modelAttribute="jobapplication" action="/careers/{username}/thanks" method="get">        	
 	        	<div>
 		            <h2>Thanks for your submission</h2>
 				</div>
 			</form:form>
 		</div>
 		<div>
-        	<a href="home.jsp">Home</a>
+        	<a href="${pageContext.request.contextPath}/home.jsp">Home</a>
 		</div>
     </body>
 </html>

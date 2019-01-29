@@ -15,6 +15,7 @@ rco\springmvc\servlet\HandlerServlet.class
 rco\springmvc\model\Job.class
 rco\springmvc\controller\JobApplicationController.class
 rco\springmvc\model\Login.class
+rco\springmvc\servlet\JobApplicationServlet.class
 rco\springmvc\service\JobServiceImpl.class
 rco\springmvc\dao\UserMapper.class
 rco\springmvc\service\UserService.class

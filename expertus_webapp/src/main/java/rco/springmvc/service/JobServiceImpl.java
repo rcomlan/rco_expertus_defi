@@ -1,6 +1,5 @@
 package rco.springmvc.service;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,7 @@ public class JobServiceImpl implements JobService
 	public JobServiceImpl() 
 	{
 		this.jobDAOImpl = new JobDAOImpl();
+		this.jobApplicationDAOImpl = new JobApplicationDAOImpl();
 	}
 	
 	public JobServiceImpl(JobDAOImpl jobDAOImpl) 
@@ -42,8 +42,8 @@ public class JobServiceImpl implements JobService
 	}
 
 	@Override
-	public void addJobApplication(String username, String refjob, String availability_date, Blob resume) 
+	public void addJobApplication(String username, String refjob) 
 	{
-		jobApplicationDAOImpl.addJobApplication(username, refjob, availability_date, resume);
+		jobApplicationDAOImpl.addJobApplication(username, refjob);
 	}
 }

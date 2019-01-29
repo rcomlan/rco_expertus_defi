@@ -51,7 +51,7 @@
             <h2>Careers at Expertus</h2>
 		</div>
 		
-		<form:form id="CareersForm" modelAttribute="job" action="applyProcess" method="post">
+		<form:form id="CareersForm" modelAttribute="job" action="${pageContext.request.contextPath}/apply" method="post">
 			<div>
 				<table>
 		        	<tr>
@@ -77,8 +77,8 @@
 		        <table id="t01" style="width:100%">
 		            <thead>
 		                <tr class="tr tr-success">
-		                    <td>Reference </td>
-		                    <td>URL </td>
+		                    <td>Reference</td>
+		                    <td>URL</td>
 		                    <td>Published date</td>
 		                    <td>End publish date</td>
 		                    <td>Job Title</td>
@@ -99,16 +99,17 @@
 			                    <td>${jobs.level}</td>
 			                    <td>${jobs.salary}</td>
 			                    <td>${jobs.status}</td>
-			                    <td><input type="checkbox" name="id" value=" "></td>
+			                    <td><input type="checkbox" name="selected" value="${jobs.refjob}"></td>
 		                    </tr>
 		                </c:forEach>
 		            </tbody>
 		        </table>
 		    </div>
-		    <br>
-		    <br>
 		    <div>
-				<form:button id="jobapplication" name="thanks">Confirm submit</form:button>
+		    	<input type="hidden" name="username" value="${username}">
+		    </div>
+		    <div>
+		    	<input type="submit" value="Apply submissions" name="careers/{username}/careers/{username}/applyProcess" id="job" />
 			</div>
 		    <div>
 	        	<a href="${pageContext.request.contextPath}/home.jsp">Home</a>

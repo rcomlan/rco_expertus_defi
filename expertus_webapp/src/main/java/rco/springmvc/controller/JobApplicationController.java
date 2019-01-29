@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,56 +43,40 @@ public class JobApplicationController
 	    userService = new UserServiceImpl();
 	    User loggedUser = userService.getUserInfo(username);
 	    
-	    modelandview = new ModelAndView("careers");
-    	modelandview.addObject("username", loggedUser.getUsername());
-    	modelandview.addObject("firstname", loggedUser.getFirstname());
-    	modelandview.addObject("lastname", loggedUser.getLastname());
-    	modelandview.addObject("profil", loggedUser.getProfil());
-	    
-		jobService = new JobServiceImpl();
-    	ArrayList<Job> jobs = new ArrayList<Job>();
-    	jobs = jobService.getJobsList("Opened");   
-	    modelandview.addObject("jobs", jobs);
+	    if (loggedUser != null)
+	    {
+	    	modelandview = new ModelAndView("careers");
+	    	modelandview.addObject("username", loggedUser.getUsername());
+	    	modelandview.addObject("firstname", loggedUser.getFirstname());
+	    	modelandview.addObject("lastname", loggedUser.getLastname());
+	    	modelandview.addObject("profil", loggedUser.getProfil());
+		    
+			jobService = new JobServiceImpl();
+	    	ArrayList<Job> jobs = new ArrayList<Job>();
+	    	jobs = jobService.getJobsList("Opened");   
+		    modelandview.addObject("jobs", jobs);
+	    }
+    	
 	    return modelandview;
 	}
 	
-	@RequestMapping(value = "/thanks", method = RequestMethod.GET)
+	@RequestMapping(value = "/careers/{username}/thanks", method = RequestMethod.GET)
 	public ModelAndView showConfirmation(HttpServletRequest request, HttpServletResponse response, 
-	@ModelAttribute("jobapplication") JobApplication jobapplication, String refjob, String username) 
+	@ModelAttribute("jobapplication") JobApplication jobapplication, @PathVariable("username") String username) 
 	{
 	    ModelAndView modelandview = new ModelAndView("thanks");
-	    modelandview.addObject("user", new User());
-	    String confirmation = (username + refjob).toUpperCase();
-	    modelandview.addObject("confirmation", confirmation);
-	    
-	    jobService = new JobServiceImpl();
-	    modelandview.addObject("jobapplication");
-	    
-	    // Retourne l'interface du job recherché
+//	    userService = new UserServiceImpl();
+//	    User loggedUser = userService.getUserInfo(username);
+//	    modelandview.addObject("username", loggedUser.getUsername());
+//    	modelandview.addObject("firstname", loggedUser.getFirstname());
+//    	modelandview.addObject("lastname", loggedUser.getLastname());
+//    	modelandview.addObject("profil", loggedUser.getProfil());
 	    return modelandview;
 	}
 	
-	@RequestMapping(value = "/applyProcess", method = RequestMethod.POST)
-	public ModelAndView addJobApplication(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jobapplication") JobApplication jobapplication, String refjob, String username) 
+	@RequestMapping(value = "/careers/{username}/applyProcess", method = RequestMethod.POST)
+	public ModelAndView addJobApplication(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jobapplication") JobApplication jobapplication, @PathVariable("username") String username) 
 	{		
-		ModelAndView modelandview;
-		userService = new UserServiceImpl();
-		User user = userService.getUserInfo(username);
-		
-		if (user.getUsername().toLowerCase().equals("admin")) modelandview = new ModelAndView("welcome");
-		else 
-		{
-			modelandview = new ModelAndView("thanks");
-		    modelandview.addObject("jobapplication", new JobApplication());
-		    modelandview.addObject("user", user);
-		    jobService = new JobServiceImpl();
-		    jobService.addJobApplication(username, refjob, jobapplication.getAvailability_date(), jobapplication.getResume());
-		}
-		modelandview.addObject("username", user.getUsername());
-    	modelandview.addObject("firstname", user.getFirstname());
-    	modelandview.addObject("lastname", user.getLastname());
-    	modelandview.addObject("profil", user.getProfil());
-	
-		return modelandview;
+		return null;
 	}	
 }

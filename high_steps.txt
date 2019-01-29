@@ -19,6 +19,6 @@
 
 Next step
 
-- Select jobs to apply and confirm : in progress / test
+- Select jobs to apply and confirm : done
 
-- Apply/Seperate CSS to .jsp pages : pending
+- Apply/Seperate CSS to .jsp pages : in progress
