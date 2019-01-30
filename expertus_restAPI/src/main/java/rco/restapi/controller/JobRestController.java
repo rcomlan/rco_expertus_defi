@@ -50,4 +50,10 @@ public class JobRestController extends BaseController {
 	            .body(jb);
 	  }
 	
+	  @RequestMapping(value = "/job")
+	  public void addJob(String refjob, String url, String datepublish, String endpublishdate, String jobtitle, String level, Double salary) 
+	  {
+		  super._repositoryFactory.Job().addJob(refjob, url, datepublish, endpublishdate, jobtitle, level, salary);		
+	  }
+	
 }

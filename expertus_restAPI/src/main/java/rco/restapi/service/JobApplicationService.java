@@ -11,7 +11,7 @@ public class JobApplicationService
 		this.repositoryFactory = p_repositoryFactory;
 	}
 	
-	public void AddJobApplication()
+	public void getJobApplication()
 	{
 		
 	}

@@ -55,6 +55,23 @@ public class JobRepository extends RepositoryBase<Job>
 		
 	}
 	
+	
+	public void addJob(String refjob, String url, String datepublish, String endpublishdate, String jobtitle, String level, Double salary)
+	{
+		Job job = new Job();
+		try {
+			String status = "Opened";
+			String _query = "insert into job(refjob, url, datepublish, endpublishdate, jobtitle, level, salary, status) values ('" + refjob + "','" + url + "','" + datepublish + "','" + endpublishdate + "', '" + jobtitle + "', '" + level + "', " + salary + ", '" + status + "')";	
+			Statement stmt = super._dbConnection.createStatement();
+			int _resultSet = stmt.executeUpdate(_query);				
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		// TODO Auto-generated method stub		
+	}
+	
 	public JobRepository(Connection connection)throws InstantiationException, IllegalAccessException {
 		super(connection, Job.class);
 		// TODO Auto-generated constructor stub

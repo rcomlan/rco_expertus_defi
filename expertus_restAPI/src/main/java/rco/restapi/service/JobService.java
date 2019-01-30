@@ -12,9 +12,9 @@ public class JobService
 		this.repositoryFactory = p_repositoryFactory;
 	}
 	
-	public void AddJob()
+	public void AddJob(String refjob, String url, String datepublish, String endpublishdate, String jobtitle, String level, Double salary)
 	{
-		
+		this.repositoryFactory.Job().addJob(refjob, url, datepublish, endpublishdate, jobtitle, level, salary);
 	}
 
 }
